@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{321C894C-74DB-4AEF-A108-4300C1C8B37A}</ProjectGuid>
+    <BaseDirectory>.</BaseDirectory>
+    <Compiler>DMD2</Compiler>
+    <PreferOneStepBuild>true</PreferOneStepBuild>
+    <UseDefaultCompiler>true</UseDefaultCompiler>
+    <IncrementalLinking>true</IncrementalLinking>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <Externalconsole>true</Externalconsole>
+    <Target>Executable</Target>
+    <OutputName>nintemulator</OutputName>
+    <UnittestMode>false</UnittestMode>
+    <LinkinThirdPartyLibraries>false</LinkinThirdPartyLibraries>
+    <ObjectsDirectory>obj\Debug</ObjectsDirectory>
+    <DebugLevel>0</DebugLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <Externalconsole>true</Externalconsole>
+    <Target>Executable</Target>
+    <OutputName>nintemulator</OutputName>
+    <UnittestMode>false</UnittestMode>
+    <LinkinThirdPartyLibraries>false</LinkinThirdPartyLibraries>
+    <ObjectsDirectory>obj\Release</ObjectsDirectory>
+    <DebugLevel>0</DebugLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Unittest|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Unittest</OutputPath>
+    <Externalconsole>true</Externalconsole>
+    <Target>Executable</Target>
+    <OutputName>nintemulator</OutputName>
+    <UnittestMode>true</UnittestMode>
+    <LinkinThirdPartyLibraries>false</LinkinThirdPartyLibraries>
+    <ObjectsDirectory>obj\Unittest</ObjectsDirectory>
+    <DebugLevel>0</DebugLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="common\" />
+    <Folder Include="fc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="common\bus_decoder.d" />
+    <Compile Include="common\cycle.d" />
+    <Compile Include="common\cycle_mapper.d" />
+    <Compile Include="common\cycle_map_factory.d" />
+    <Compile Include="common\sequence.d" />
+    <Compile Include="common\video\null_video_channel.d" />
+    <Compile Include="common\video\null_video_output.d" />
+    <Compile Include="common\video\video_channel.d" />
+    <Compile Include="common\video\video_output.d" />
+    <Compile Include="fc\ppu\bus.d" />
+    <Compile Include="fc\ppu\output_unit.d" />
+    <Compile Include="fc\ppu\palette_memory.d" />
+    <Compile Include="fc\ppu\registers.d" />
+    <Compile Include="fc\ppu\rp2c02_cycles.d" />
+    <Compile Include="fc\ppu\rp2c02_cycle_map_factory.d" />
+    <Compile Include="fc\ppu\bg\bg_cycles.d" />
+    <Compile Include="fc\ppu\bg\bg_cycle_mapper.d" />
+    <Compile Include="fc\ppu\bg\bg_output_unit.d" />
+    <Compile Include="fc\ppu\bg\scroll.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_attr_request.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_attr_response.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_bit0_request.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_bit0_response.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_bit1_request.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_bit1_response.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_name_request.d" />
+    <Compile Include="fc\ppu\bg\cycles\bg_name_response.d" />
+    <Compile Include="fc\ppu\bg\cycles\clock_scroll_x.d" />
+    <Compile Include="fc\ppu\bg\cycles\clock_scroll_y.d" />
+    <Compile Include="fc\ppu\bg\cycles\reset_scroll_x.d" />
+    <Compile Include="fc\ppu\bg\cycles\reset_scroll_y.d" />
+    <Compile Include="fc\ppu\cycles\enter_vblank.d" />
+    <Compile Include="fc\ppu\cycles\idle_skip_determination.d" />
+    <Compile Include="fc\ppu\cycles\latch_tiles.d" />
+    <Compile Include="fc\ppu\cycles\leave_vblank.d" />
+    <Compile Include="fc\ppu\cycles\output_cycle.d" />
+    <Compile Include="fc\ppu\sp\oam.d" />
+    <Compile Include="fc\ppu\sp\obj_cycles.d" />
+    <Compile Include="fc\ppu\sp\obj_cycle_mapper.d" />
+    <Compile Include="fc\ppu\sp\sp_output_unit.d" />
+    <Compile Include="fc\ppu\sp\cycles\oam_initialize_read.d" />
+    <Compile Include="fc\ppu\sp\cycles\oam_initialize_write.d" />
+    <Compile Include="fc\ppu\sp\cycles\oam_read.d" />
+    <Compile Include="fc\ppu\sp\cycles\oam_read_index.d" />
+    <Compile Include="fc\ppu\sp\cycles\oam_write.d" />
+    <Compile Include="fc\ppu\sp\cycles\sp_bit0_request.d" />
+    <Compile Include="fc\ppu\sp\cycles\sp_bit0_response.d" />
+    <Compile Include="fc\ppu\sp\cycles\sp_bit1_request.d" />
+    <Compile Include="fc\ppu\sp\cycles\sp_bit1_response.d" />
+    <Compile Include="fc\ppu\sp\evaluation\copy_attribute.d" />
+    <Compile Include="fc\ppu\sp\evaluation\copy_name.d" />
+    <Compile Include="fc\ppu\sp\evaluation\copy_x.d" />
+    <Compile Include="fc\ppu\sp\evaluation\copy_y.d" />
+    <Compile Include="fc\ppu\sp\evaluation\evaluation_cycles.d" />
+    <Compile Include="fc\ppu\sp\evaluation\skip_attribute.d" />
+    <Compile Include="fc\ppu\sp\evaluation\skip_name.d" />
+    <Compile Include="fc\ppu\sp\evaluation\skip_x.d" />
+    <Compile Include="fc\ppu\sp\evaluation\skip_y.d" />
+    <Compile Include="fc\ppu\sp\evaluation\spin.d" />
+    <Compile Include="main.d" />
+    <Compile Include="fc\ppu\rp2c0x.d" />
+  </ItemGroup>
+</Project>

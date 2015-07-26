@@ -1,0 +1,8 @@
+# Paths
+
+bin/
+obj/
+
+# Files
+
+*.userprefs
