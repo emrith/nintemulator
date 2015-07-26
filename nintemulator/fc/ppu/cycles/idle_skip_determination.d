@@ -16,6 +16,6 @@ class IdleSkipDetermination : Cycle
 
     public override void execute()
     {
-        registers.SkipIdle = registers.Field;
+        registers.skipIdle = registers.field;
     }
 }

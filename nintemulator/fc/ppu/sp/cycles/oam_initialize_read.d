@@ -16,6 +16,6 @@ class OamInitializeRead : Cycle
 
     public override void execute()
     {
-        oam.Latch = 0xff;
+        oam.latch = 0xff;
     }
 }

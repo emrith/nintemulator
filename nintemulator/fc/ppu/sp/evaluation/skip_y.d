@@ -20,24 +20,24 @@ class SkipY : Cycle
 
     public override void execute()
     {
-        int compare = (registers.V - oam.Latch) & 0x1ff;
+        int compare = (registers.v - oam.latch) & 0x1ff;
         if (compare < 8)
         {
-            registers.Status |= 0x20;
+            registers.status |= 0x20;
 
-            oam.MemoryIndex = ((oam.MemoryIndex + 1) & 0xff);
-            oam.Phase = EvaluationCycles.SkipNamePhase;
+            oam.memoryIndex = ((oam.memoryIndex + 1) & 0xff);
+            oam.phase = EvaluationCycles.SkipNamePhase;
         }
         else
         {
-            oam.MemoryIndex = ((oam.MemoryIndex + 4) & 0xfc) + ((oam.MemoryIndex + 1) & 0x03);
+            oam.memoryIndex = ((oam.memoryIndex + 4) & 0xfc) + ((oam.memoryIndex + 1) & 0x03);
 
-            if ((oam.MemoryIndex & 0xfc) == 0)
+            if ((oam.memoryIndex & 0xfc) == 0)
             {
-                oam.Phase = EvaluationCycles.SpinPhase;
+                oam.phase = EvaluationCycles.SpinPhase;
             }
         }
 
-        oam.Latch = oam.Object[oam.ObjectIndex];
+        oam.latch = oam.object[oam.objectIndex];
     }
 }

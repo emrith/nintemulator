@@ -22,7 +22,7 @@ class BgBit0Request : Cycle
 
     public override void execute()
     {
-        bus.Address = registers.BgAddress | (registers.Name << 4) | 0 | ((scroll.Address >> 12) & 7);
-        bus.Read = true;
+        bus.address = registers.bgAddress | (registers.name << 4) | 0 | ((scroll.address >> 12) & 7);
+        bus.read = true;
     }
 }

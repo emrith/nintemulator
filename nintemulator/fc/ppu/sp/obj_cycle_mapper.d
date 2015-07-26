@@ -21,7 +21,7 @@ class SpCycleMapper : CycleMapper!(341, 262)
 
     public override void mapTo(Cycle[341][262] array)
     {
-		foreach (v; Sequence.range(0, 240))
+        foreach (v; Sequence.range(0, 240))
         {
             mapToRaster(array[v]);
         }
@@ -31,19 +31,19 @@ class SpCycleMapper : CycleMapper!(341, 262)
 
     private void mapToRaster(Cycle[] raster)
     {
-		foreach (h; Sequence.range(1, 65, 2))
+        foreach (h; Sequence.range(1, 65, 2))
         {
             raster[h + 0] += cycles.oamInitializeRead;
             raster[h + 1] += cycles.oamInitializeWrite;
         }
 
-		foreach (h; Sequence.range(65, 257, 2))
+        foreach (h; Sequence.range(65, 257, 2))
         {
             raster[h + 0] += cycles.oamRead;
             raster[h + 1] += cycles.oamWrite;
         }
 
-		foreach (h; Sequence.range(257, 321, 8))
+        foreach (h; Sequence.range(257, 321, 8))
         {
             raster[h + 0] += cycles.oamReadIndex + cycles.bgNameRequest;
             raster[h + 1] += cycles.oamReadIndex + cycles.bgNameResponse;

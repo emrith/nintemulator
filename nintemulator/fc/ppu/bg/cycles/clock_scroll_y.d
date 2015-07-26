@@ -16,27 +16,27 @@ class ClockScrollY : Cycle
 
     public override void execute()
     {
-        if ((scroll.Address & 0x7000) != 0x7000)
+        if ((scroll.address & 0x7000) != 0x7000)
         {
-            scroll.Address += 0x1000;
+            scroll.address += 0x1000;
         }
         else
         {
-            scroll.Address ^= 0x7000;
+            scroll.address ^= 0x7000;
 
-            if ((scroll.Address & 0x03e0) == 0x03a0)
+            if ((scroll.address & 0x03e0) == 0x03a0)
             {
-                scroll.Address ^= 0x0ba0;
+                scroll.address ^= 0x0ba0;
             }
             else
             {
-                if ((scroll.Address & 0x03e0) == 0x3e0)
+                if ((scroll.address & 0x03e0) == 0x3e0)
                 {
-                    scroll.Address ^= 0x03e0;
+                    scroll.address ^= 0x03e0;
                 }
                 else
                 {
-                    scroll.Address += 0x0020;
+                    scroll.address += 0x0020;
                 }
             }
         }

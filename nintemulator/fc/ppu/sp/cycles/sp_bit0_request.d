@@ -22,11 +22,11 @@ class SpBit0Request : Cycle
 
     public override void execute()
     {
-        auto index = (registers.H - 257) / 8;
-		auto value = oam.Output[index];
-		auto line = registers.V - value.Y;
+        auto index = (registers.h - 257) / 8;
+        auto value = oam.Output[index];
+        auto line = registers.v - value.y;
 
-        bus.Address = registers.SpAddress | (value.Name << 4) | 0 | (line & 7);
-        bus.Read = true;
+        bus.address = registers.spAddress | (value.name << 4) | 0 | (line & 7);
+        bus.read = true;
     }
 }

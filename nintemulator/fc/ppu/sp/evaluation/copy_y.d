@@ -20,27 +20,27 @@ class CopyY : Cycle
 
     public override void execute()
     {
-        oam.Object[oam.ObjectIndex] = oam.Latch;
+        oam.object[oam.objectIndex] = oam.latch;
 
-        int compare = (registers.V - oam.Latch) & 0x1ff;
+        int compare = (registers.v - oam.latch) & 0x1ff;
         if (compare < 8)
         {
-            if (oam.ObjectIndex == 0)
+            if (oam.objectIndex == 0)
             {
-                oam.Object0Found = true;
+                oam.object0Found = true;
             }
 
-            oam.MemoryIndex = ((oam.MemoryIndex + 1) & 0xff);
-            oam.ObjectIndex = ((oam.ObjectIndex + 1) & 0x1f);
-            oam.Phase = EvaluationCycles.CopyNamePhase;
+            oam.memoryIndex = ((oam.memoryIndex + 1) & 0xff);
+            oam.objectIndex = ((oam.objectIndex + 1) & 0x1f);
+            oam.phase = EvaluationCycles.CopyNamePhase;
         }
         else
         {
-            oam.MemoryIndex = ((oam.MemoryIndex + 4) & 0xff);
+            oam.memoryIndex = ((oam.memoryIndex + 4) & 0xff);
 
-            if (oam.MemoryIndex == 0)
+            if (oam.memoryIndex == 0)
             {
-                oam.Phase = EvaluationCycles.SpinPhase;
+                oam.phase = EvaluationCycles.SpinPhase;
             }
         }
     }

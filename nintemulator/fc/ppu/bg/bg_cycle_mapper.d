@@ -20,10 +20,10 @@ class BgCycleMapper : CycleMapper!(341, 262)
     {
         for (int v = 0; v < 240; v++)
         {
-			mapToRaster(array[v]);
+            mapToRaster(array[v]);
         }
 
-		mapToRaster(array[261]);
+        mapToRaster(array[261]);
 
         for (int h = 280; h <= 304; h++)
         {
@@ -33,7 +33,7 @@ class BgCycleMapper : CycleMapper!(341, 262)
 
     private void mapToRaster(Cycle[341] raster)
     {
-		foreach (h; Sequence.range(1, 257, 8))
+        foreach (h; Sequence.range(1, 257, 8))
         {
             raster[h + 0] += cycles.bgNameRequest;
             raster[h + 1] += cycles.bgNameResponse;
@@ -45,7 +45,7 @@ class BgCycleMapper : CycleMapper!(341, 262)
             raster[h + 7] += cycles.bgBit1Response;
         }
 
-		foreach (h; Sequence.range(321, 337, 8))
+        foreach (h; Sequence.range(321, 337, 8))
         {
             raster[h + 0] += cycles.bgNameRequest;
             raster[h + 1] += cycles.bgNameResponse;
@@ -57,18 +57,18 @@ class BgCycleMapper : CycleMapper!(341, 262)
             raster[h + 7] += cycles.bgBit1Response;
         }
 
-		foreach (h; Sequence.range(337, 341, 2))
+        foreach (h; Sequence.range(337, 341, 2))
         {
             raster[h + 0] += cycles.bgNameRequest;
             raster[h + 1] += cycles.bgNameResponse;
         }
 
-		foreach (h; Sequence.range(8, 249, 8))
+        foreach (h; Sequence.range(8, 249, 8))
         {
             raster[h] += cycles.clockScrollX;
         }
 
-		foreach (h; Sequence.range(328, 336, 8))
+        foreach (h; Sequence.range(328, 336, 8))
         {
             raster[h] += cycles.clockScrollX;
         }

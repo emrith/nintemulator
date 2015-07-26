@@ -25,40 +25,45 @@ class OutputUnit
         this.registers = registers;
     }
 
-    public int GetOutputColor()
+    public int getOutputColor()
     {
-        auto bkgColor = bgOutputUnit.getOutputColor();
-		auto objColor = spOutputUnit.getOutputColor();
-		auto extColor = 0;
+        auto colorIndex = getOutputColorIndex();
+        auto color = paletteMemory.getData(colorIndex);
 
-        if (registers.H < 10)
+        return color;
+    }
+
+    public int getOutputColorIndex()
+    {
+        auto bgColor = bgOutputUnit.getOutputColor();
+        auto spColor = spOutputUnit.getOutputColor();
+
+        if (registers.h < 10)
         {
-            if (registers.BgClipped) { bkgColor = 0; }
-            if (registers.SpClipped) { objColor = 0; }
+            if (registers.bgClipped) { bgColor = 0; }
+            if (registers.spClipped) { spColor = 0; }
         }
 
-        if (!(bkgColor & 3) && !(objColor & 3))
+        if (!(bgColor & 3) && !(spColor & 3))
         {
-            return paletteMemory.getData(extColor);
+            return 0; // Really, this is from the EXT pins which are grounded in the Famicom.
         }
 
-        if (!(bkgColor & 3))
+        if (!(bgColor & 3))
         {
-            return paletteMemory.getData(objColor);
+            return spColor;
         }
 
-        if (!(objColor & 3))
+        if (!(spColor & 3))
         {
-            return paletteMemory.getData(bkgColor);
+            return bgColor;
         }
 
-        if (spOutputUnit.Active == 0 && oam.Object0InLine)
+        if (spOutputUnit.active == 0 && oam.object0InLine)
         {
-            registers.Status |= 0x40;
+            registers.status |= 0x40;
         }
-
-        return paletteMemory.getData(spOutputUnit.priority()
-            ? objColor
-            : bkgColor);
+        
+        return spOutputUnit.priority() ? spColor : bgColor;
     }
 }

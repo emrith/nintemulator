@@ -3,20 +3,20 @@
 
 class Registers
 {
-    public bool BgClipped;
-    public bool BgEnabled;
-    public bool SpClipped;
-    public bool SpEnabled;
-    public bool SkipIdle;
-    public bool Field;
+    public bool bgClipped;
+    public bool bgEnabled;
+    public bool spClipped;
+    public bool spEnabled;
+    public bool skipIdle;
+    public bool field;
 
-    public ushort H;
-    public ushort V;
-    public ushort BgAddress;
-    public ushort SpAddress;
-    public ubyte Name;
-    public ubyte Attr;
-    public ubyte Bit0;
-    public ubyte Bit1;
-    public ubyte Status;
+    public ushort h;
+    public ushort v;
+    public ushort bgAddress;
+    public ushort spAddress;
+    public ubyte name;
+    public ubyte attr;
+    public ubyte bit0;
+    public ubyte bit1;
+    public ubyte status;
 }

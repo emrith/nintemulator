@@ -45,6 +45,9 @@
   <ItemGroup>
     <Folder Include="common\" />
     <Folder Include="fc\" />
+    <Folder Include="fc\cpu\" />
+    <Folder Include="common\rp6502\" />
+    <Folder Include="common\rp6502\cycles\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\bus_decoder.d" />
@@ -60,7 +63,6 @@
     <Compile Include="fc\ppu\output_unit.d" />
     <Compile Include="fc\ppu\palette_memory.d" />
     <Compile Include="fc\ppu\registers.d" />
-    <Compile Include="fc\ppu\rp2c02_cycles.d" />
     <Compile Include="fc\ppu\rp2c02_cycle_map_factory.d" />
     <Compile Include="fc\ppu\bg\bg_cycles.d" />
     <Compile Include="fc\ppu\bg\bg_cycle_mapper.d" />
@@ -108,5 +110,15 @@
     <Compile Include="fc\ppu\sp\evaluation\spin.d" />
     <Compile Include="main.d" />
     <Compile Include="fc\ppu\rp2c0x.d" />
+    <Compile Include="common\rp6502\core.d" />
+    <Compile Include="common\rp6502\registers.d" />
+    <Compile Include="common\register16.d" />
+    <Compile Include="common\rp6502\bus.d" />
+    <Compile Include="common\rp6502\cycles\fetch_from_pc_request.d" />
+    <Compile Include="common\rp6502\cycles\latch_eal_response.d" />
+    <Compile Include="common\rp6502\cycles\fetch_from_sp_request.d" />
+    <Compile Include="common\rp6502\cycles\latch_eah_response.d" />
+    <Compile Include="common\rp6502\alu.d" />
+    <Compile Include="fc\ppu\rp2c0x_cycles.d" />
   </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@
 import common.cycle;
 import common.cycle_mapper;
 import common.cycle_map_factory;
-import fc.ppu.rp2c02_cycles;
+import fc.ppu.rp2c0x_cycles;
 
 
 class RP2C02CycleMapFactory : CycleMapFactory!(341, 262)
@@ -12,7 +12,7 @@ class RP2C02CycleMapFactory : CycleMapFactory!(341, 262)
     private RP2C02Cycles cycles;
     private CycleMapper!(341, 262)[] cycleMappers;
 
-	this(RP2C02Cycles cycles, CycleMapper!(341, 262)[] cycleMappers)
+    this(RP2C02Cycles cycles, CycleMapper!(341, 262)[] cycleMappers)
     {
         this.cycles = cycles;
         this.cycleMappers = cycleMappers;
@@ -20,9 +20,9 @@ class RP2C02CycleMapFactory : CycleMapFactory!(341, 262)
 
     public Cycle[341][262] createMap()
     {
-		Cycle[341][262] screen;
+        Cycle[341][262] screen;
 
-		foreach (cycleMapper; cycleMappers)
+        foreach (cycleMapper; cycleMappers)
         {
             cycleMapper.mapTo(screen);
         }

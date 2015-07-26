@@ -17,9 +17,9 @@ class CopyAttribute : Cycle
 
     public override void execute()
     {
-        oam.Object[oam.ObjectIndex] = oam.Latch;
-        oam.MemoryIndex = (oam.MemoryIndex + 1) & 0xff;
-        oam.ObjectIndex = (oam.ObjectIndex + 1) & 0x1f;
-        oam.Phase = EvaluationCycles.CopyXPhase;
+        oam.object[oam.objectIndex] = oam.latch;
+        oam.memoryIndex = (oam.memoryIndex + 1) & 0xff;
+        oam.objectIndex = (oam.objectIndex + 1) & 0x1f;
+        oam.phase = EvaluationCycles.CopyXPhase;
     }
 }

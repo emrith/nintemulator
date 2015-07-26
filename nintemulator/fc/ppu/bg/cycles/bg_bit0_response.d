@@ -19,7 +19,7 @@ class BgBit0Response : Cycle
 
     public override void execute()
     {
-        registers.Bit0 = bus.Data;
-        bus.Read = false;
+        registers.bit0 = bus.data;
+        bus.read = false;
     }
 }

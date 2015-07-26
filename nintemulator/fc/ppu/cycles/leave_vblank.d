@@ -16,6 +16,6 @@ class LeaveVBlank : Cycle
 
     public override void execute()
     {
-        registers.Status &= 0x1f; // 0b0001_1111
+        registers.status &= 0b0001_1111;
     }
 }

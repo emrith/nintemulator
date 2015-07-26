@@ -1,11 +1,11 @@
 ﻿module fc.ppu.bus;
 
 
-struct Bus
+class Bus
 {
-    public ushort Address;
-    public ubyte Data;
-    public bool AddressLatchEnable;
-    public bool Read;
-    public bool Write;
+    public ushort address;
+    public ubyte data;
+    public bool addressLatchEnable;
+    public bool read;
+    public bool write;
 }

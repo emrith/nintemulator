@@ -16,7 +16,7 @@ class Spin : Cycle
 
     public override void execute()
     {
-        oam.Latch = oam.Object[oam.ObjectIndex];
-        oam.MemoryIndex = ((oam.MemoryIndex + 4) & 0xfc);
+        oam.latch = oam.object[oam.objectIndex];
+        oam.memoryIndex = (oam.memoryIndex + 4) & 0xfc;
     }
 }

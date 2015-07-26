@@ -3,9 +3,9 @@
 
 class Scroll
 {
-    public ushort Address;
-    public ushort Latch;
-    public bool Mode;
-    public bool Toggle;
-    public int Fine;
+    public ushort address;
+    public ushort latch;
+    public bool mode;
+    public bool toggle;
+    public int fine;
 }

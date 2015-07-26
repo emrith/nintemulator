@@ -16,6 +16,6 @@ class EnterVBlank : Cycle
 
     public override void execute()
     {
-        registers.Status |= 0x80; // 0b1000_0000
+        registers.status |= 0b1000_0000;
     }
 }

@@ -16,6 +16,6 @@ class ResetScrollY : Cycle
 
     public override void execute()
     {
-        scroll.Address = (scroll.Address & ~0x7be0) | (scroll.Latch & 0x7be0);
+        scroll.address = (scroll.address & ~0x7be0) | (scroll.latch & 0x7be0);
     }
 }

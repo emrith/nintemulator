@@ -16,7 +16,7 @@ class OamInitializeWrite : Cycle
 
     public override void execute()
     {
-        oam.Object[oam.ObjectIndex] = oam.Latch;
-        oam.ObjectIndex = (oam.ObjectIndex + 1) & 0x1f;
+        oam.object[oam.objectIndex] = oam.latch;
+        oam.objectIndex = (oam.objectIndex + 1) & 0x1f;
     }
 }

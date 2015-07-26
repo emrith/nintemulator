@@ -19,7 +19,7 @@ class BgNameRequest : Cycle
 
     public override void execute()
     {
-        bus.Address = 0x2000 | (scroll.Address & 0xfff);
-        bus.Read = true;
+        bus.address = 0x2000 | (scroll.address & 0xfff);
+        bus.read = true;
     }
 }

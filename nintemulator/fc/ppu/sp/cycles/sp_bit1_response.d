@@ -25,18 +25,18 @@ class SpBit1Response : Cycle
 
     public override void execute()
     {
-        auto index = (registers.H - 257) / 8;
-		auto value = oam.Output[index];
+        auto index = (registers.h - 257) / 8;
+        auto value = oam.Output[index];
 
-        if (value.X == 0xff)
+        if (value.x == 0xff)
         {
-            value.Plane1 = 0;
+            value.plane1 = 0;
         }
         else
         {
-            value.Plane1 = bus.Data;
+            value.plane1 = bus.data;
         }
 
-        bus.Read = false;
+        bus.read = false;
     }
 }

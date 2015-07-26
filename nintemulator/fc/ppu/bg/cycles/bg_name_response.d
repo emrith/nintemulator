@@ -19,7 +19,7 @@ class BgNameResponse : Cycle
 
     public override void execute()
     {
-        registers.Name = bus.Data;
-        bus.Read = false;
+        registers.name = bus.data;
+        bus.read = false;
     }
 }

@@ -19,7 +19,7 @@ class BgAttrRequest : Cycle
 
     public override void execute()
     {
-        bus.Address = 0x23c0 | (scroll.Address & 0xc00) | ((scroll.Address >> 4) & 0x38) | ((scroll.Address >> 2) & 7);
-        bus.Read = true;
+        bus.address = 0x23c0 | (scroll.address & 0xc00) | ((scroll.address >> 4) & 0x38) | ((scroll.address >> 2) & 7);
+        bus.read = true;
     }
 }

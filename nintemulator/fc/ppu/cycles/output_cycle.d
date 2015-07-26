@@ -22,14 +22,9 @@ class OutputCycle : Cycle
 
     public override void execute()
     {
-        if (registers.V >= 240)
-        {
-            return;
-        }
+        auto channel = videoOutput.getChannel(registers.v);
+        auto output = outputUnit.getOutputColor();
 
-        auto channel = videoOutput.getChannel(registers.V);
-        auto output = outputUnit.GetOutputColor();
-
-        channel.sample(registers.H, output);
+        channel.sample(registers.h, output);
     }
 }

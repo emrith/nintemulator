@@ -17,8 +17,8 @@ class SkipName : Cycle
 
     public override void execute()
     {
-        oam.Latch = oam.Object[oam.ObjectIndex];
-        oam.MemoryIndex = (oam.MemoryIndex + 1) & 0xff;
-		oam.Phase = EvaluationCycles.SkipAttributePhase;
+        oam.latch = oam.object[oam.objectIndex];
+        oam.memoryIndex = (oam.memoryIndex + 1) & 0xff;
+        oam.phase = EvaluationCycles.SkipAttributePhase;
     }
 }

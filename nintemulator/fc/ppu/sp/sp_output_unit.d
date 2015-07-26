@@ -6,11 +6,9 @@ import fc.ppu.sp.oam;
 
 class SpOutputUnit
 {
-    private enum SPRITE_COUNT = 8;
-    
     private Oam oam;
 
-    public int Active;
+    public int active;
 
     this(Oam oam)
     {
@@ -19,7 +17,7 @@ class SpOutputUnit
 
     bool priority()
     {
-        return (oam.Output[Active].Attribute & 0x20) == 0;
+        return (oam.Output[active].attribute & 0x20) == 0;
     }
 
     int getOutputColor()
@@ -30,7 +28,7 @@ class SpOutputUnit
         // the lower priority ones.
         // 
 
-		foreach_reverse(i, ref obj; oam.Output)
+        foreach_reverse(i, ref obj; oam.Output)
         {
             // Objects become "active" when their counters go "negative"
             // And they remain "active" for 8 clocks. I'm not sure how
@@ -41,21 +39,21 @@ class SpOutputUnit
             // 9-bit: $1ff, $1fe, $1fd, $1fc, $1fb, $1fa, $1f9, $1f8
             // 
 
-            if ((--obj.X & 0x1f8) == 0x1f8)
+            if ((--obj.x & 0x1f8) == 0x1f8)
             {
-                int bit0 = (obj.Plane0 >> 7) & 1;
-                int bit1 = (obj.Plane1 >> 7) & 1;
+                int bit0 = (obj.plane0 >> 7) & 1;
+                int bit1 = (obj.plane1 >> 7) & 1;
 
-                obj.Plane0 <<= 1;
-                obj.Plane1 <<= 1;
+                obj.plane0 <<= 1;
+                obj.plane1 <<= 1;
 
                 if (!bit0 && !bit1)
                 {
                     continue;
                 }
 
-                output = (bit0 << 0) | (bit1 << 1) | ((obj.Attribute & 3) << 2);
-                Active = i;
+                output = (bit0 << 0) | (bit1 << 1) | ((obj.attribute & 3) << 2);
+                active = i;
             }
         }
 

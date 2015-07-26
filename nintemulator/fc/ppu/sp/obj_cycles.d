@@ -26,7 +26,7 @@ class SpCycles
     public SpBit0Response spBit0Response;
     public SpBit1Request spBit1Request;
     public SpBit1Response spBit1Response;
-	public OamReadIndex oamReadIndex;
+    public OamReadIndex oamReadIndex;
     public OamRead oamRead;
     public OamWrite oamWrite;
     public OamInitializeRead oamInitializeRead;

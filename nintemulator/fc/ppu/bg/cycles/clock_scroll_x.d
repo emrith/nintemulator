@@ -16,13 +16,13 @@ class ClockScrollX : Cycle
 
     public override void execute()
     {
-        if ((scroll.Address & 0x001f) == 0x001f)
+        if ((scroll.address & 0x001f) == 0x001f)
         {
-            scroll.Address ^= 0x041f;
+            scroll.address ^= 0x041f;
         }
         else
         {
-            scroll.Address += 0x0001;
+            scroll.address += 0x0001;
         }
     }
 }

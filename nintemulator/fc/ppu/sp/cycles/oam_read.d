@@ -16,6 +16,6 @@ class OamRead : Cycle
 
     public override void execute()
     {
-        oam.Latch = oam.Memory[oam.MemoryIndex];
+        oam.latch = oam.memory[oam.memoryIndex];
     }
 }

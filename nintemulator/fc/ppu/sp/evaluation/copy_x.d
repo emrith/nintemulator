@@ -17,10 +17,10 @@ class CopyX : Cycle
 
     public override void execute()
     {
-        oam.Object[oam.ObjectIndex] = oam.Latch;
-        oam.MemoryIndex = (oam.MemoryIndex + 1) & 0xff;
-        oam.ObjectIndex = (oam.ObjectIndex + 1) & 0x1f;
-        oam.Phase = (oam.ObjectIndex == 0)
+        oam.object[oam.objectIndex] = oam.latch;
+        oam.memoryIndex = (oam.memoryIndex + 1) & 0xff;
+        oam.objectIndex = (oam.objectIndex + 1) & 0x1f;
+        oam.phase = (oam.objectIndex == 0)
             ? EvaluationCycles.SkipYPhase
             : EvaluationCycles.CopyYPhase;
     }

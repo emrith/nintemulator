@@ -14,21 +14,21 @@ import fc.ppu.sp.evaluation.spin;
 
 class EvaluationCycles
 {
-	public CopyY copyY;
-	public CopyName copyName;
-	public CopyAttribute copyAttribute;
-	public CopyX copyX;
-	public SkipY skipY;
-	public SkipName skipName;
-	public SkipAttribute skipAttribute;
-	public SkipX skipX;
-	public Spin spin;
+    public CopyY copyY;
+    public CopyName copyName;
+    public CopyAttribute copyAttribute;
+    public CopyX copyX;
+    public SkipY skipY;
+    public SkipName skipName;
+    public SkipAttribute skipAttribute;
+    public SkipX skipX;
+    public Spin spin;
 
-	enum
-	{
-		CopyYPhase, CopyNamePhase, CopyAttributePhase, CopyXPhase,
-		SkipYPhase, SkipNamePhase, SkipAttributePhase, SkipXPhase,
-		SpinPhase,
-		PhaseCount
-	}
+    enum
+    {
+        CopyYPhase, CopyNamePhase, CopyAttributePhase, CopyXPhase,
+        SkipYPhase, SkipNamePhase, SkipAttributePhase, SkipXPhase,
+        SpinPhase,
+        PhaseCount
+    }
 }
