@@ -1,7 +1,7 @@
 ﻿module common.register16;
 
 
-version(BigEndian)
+version (BigEndian)
 {
     string Register16(string name)()
     {

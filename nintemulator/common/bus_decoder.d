@@ -1,7 +1,7 @@
 ﻿module common.bus_decoder;
 
 
-abstract class BusDecoder(TBus)
+interface BusDecoder(T)
 {
-    public abstract void Decode();
+    void decode();
 }
