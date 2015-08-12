@@ -17,9 +17,13 @@ class BgAttrRequest : Cycle
         this.scroll = scroll;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         bus.address = 0x23c0 | (scroll.address & 0xc00) | ((scroll.address >> 4) & 0x38) | ((scroll.address >> 2) & 7);
         bus.read = true;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

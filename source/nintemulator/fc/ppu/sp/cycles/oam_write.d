@@ -26,8 +26,13 @@ class OamWrite : Cycle
         this.phases[EvaluationCycles.SpinPhase] = cycles.spin;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
-        this.phases[oam.phase].execute();
+        this.phases[oam.phase].risingEdge();
+    }
+    
+    public override void fallingEdge()
+    {
+        this.phases[oam.phase].fallingEdge();
     }
 }

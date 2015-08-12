@@ -15,11 +15,15 @@ class CopyName : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.object[oam.objectIndex] = oam.latch;
         oam.memoryIndex = (oam.memoryIndex + 1) & 0xff;
         oam.objectIndex = (oam.objectIndex + 1) & 0x1f;
         oam.phase = EvaluationCycles.CopyAttributePhase;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

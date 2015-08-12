@@ -15,7 +15,7 @@ class CopyX : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.object[oam.objectIndex] = oam.latch;
         oam.memoryIndex = (oam.memoryIndex + 1) & 0xff;
@@ -23,5 +23,9 @@ class CopyX : Cycle
         oam.phase = (oam.objectIndex == 0)
             ? EvaluationCycles.SkipYPhase
             : EvaluationCycles.CopyYPhase;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

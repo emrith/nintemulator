@@ -17,9 +17,13 @@ class BgBit1Response : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         registers.bit1 = bus.data;
         bus.read = false;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

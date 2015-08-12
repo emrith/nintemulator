@@ -17,7 +17,7 @@ class OamReadIndex : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         auto index = ((registers.h - 1) & 0x38) >> 3;
         auto value = oam.Output[index];
@@ -39,5 +39,9 @@ class OamReadIndex : Cycle
         oam.objectIndex = 0;
         oam.phase = 0;
         oam.object0InLine = oam.object0Found;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

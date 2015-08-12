@@ -1,6 +1,8 @@
 ﻿module fc.ppu.sp.evaluation.evaluation_cycles;
 
 
+import fc.ppu.registers;
+import fc.ppu.sp.oam;
 import fc.ppu.sp.evaluation.copy_attribute;
 import fc.ppu.sp.evaluation.copy_name;
 import fc.ppu.sp.evaluation.copy_x;
@@ -30,5 +32,18 @@ class EvaluationCycles
         SkipYPhase, SkipNamePhase, SkipAttributePhase, SkipXPhase,
         SpinPhase,
         PhaseCount
+    }
+
+    this(Oam oam, Registers registers)
+    {
+        copyY = new CopyY(oam, registers);
+        copyName = new CopyName(oam);
+        copyAttribute = new CopyAttribute(oam);
+        copyX = new CopyX(oam);
+        skipY = new SkipY(oam, registers);
+        skipName = new SkipName(oam);
+        skipAttribute = new SkipAttribute(oam);
+        skipX = new SkipX(oam);
+        spin = new Spin(oam);
     }
 }

@@ -17,9 +17,13 @@ class BgNameResponse : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         registers.name = bus.data;
         bus.read = false;
+    }
+
+    public override void fallingEdge()
+    {
     }
 }

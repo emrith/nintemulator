@@ -1,26 +1,38 @@
-﻿module common.cycle;
+module common.cycle;
 
 
 abstract class Cycle
 {
-    public abstract void execute();
+    public abstract void fallingEdge();
 
-    public Cycle opOpAssign(string op)(Cycle other)
+    public abstract void risingEdge();
+
+    public static Cycle combine(Cycle a, Cycle b)
     {
-        return mixin( "this " ~ op ~ " other" );
+        auto a_is_null = a is null || (typeid(a) == typeid(NullCycle));
+        auto b_is_null = b is null || (typeid(b) == typeid(NullCycle));
+
+        if (a_is_null && b_is_null)
+        {
+            return new NullCycle();
+        }
+        else
+        {
+            if (a_is_null) { return b; }
+            if (b_is_null) { return a; }
+
+            return new DualCycle(a, b);
+        }
     }
 
-    public Cycle opBinary(string op)(Cycle other)
+    public Cycle opBinary(string op)(Cycle other) if (op == "+")
     {
-        static if (op == "+")
-        {
-            if (is(typeof(other) == NullCycle))
-            {
-                return this;
-            }
-            
-            return new DualCycle(this, other);
-        }
+        return combine(this, other);
+    }
+
+    public Cycle opOpAssign(string op)(Cycle other) if (op == "+")
+    {
+        return combine(this, other);
     }
 }
 
@@ -35,14 +47,22 @@ class DualCycle : Cycle
         this.y = y;
     }
 
-    public override void execute()
+    public override void fallingEdge()
     {
-        x.execute();
-        y.execute();
+        x.fallingEdge();
+        y.fallingEdge();
+    }
+
+    public override void risingEdge()
+    {
+        x.risingEdge();
+        y.risingEdge();
     }
 }
 
 class NullCycle : Cycle
 {
-    public override void execute() { }
+    public override void fallingEdge() { }
+
+    public override void risingEdge() { }
 }

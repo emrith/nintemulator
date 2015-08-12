@@ -14,8 +14,12 @@ class IdleSkipDetermination : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         registers.skipIdle = registers.field;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

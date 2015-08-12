@@ -1,4 +1,4 @@
-﻿module fc.ppu.cycles.output_cycle;
+﻿module fc.ppu.cycles.output;
 
 
 import common.cycle;
@@ -7,7 +7,7 @@ import fc.ppu.registers;
 import fc.ppu.output_unit;
 
 
-class OutputCycle : Cycle
+class Output : Cycle
 {
     private Registers registers;
     private OutputUnit outputUnit;
@@ -20,11 +20,15 @@ class OutputCycle : Cycle
         this.videoOutput = videoOutput;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         auto channel = videoOutput.getChannel(registers.v);
         auto output = outputUnit.getOutputColor();
 
         channel.sample(registers.h, output);
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

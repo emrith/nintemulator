@@ -3,7 +3,6 @@
 
 import common.cycle;
 import common.cycle_mapper;
-import common.sequence;
 import fc.ppu.bg.bg_cycles;
 
 
@@ -33,7 +32,7 @@ class BgCycleMapper : CycleMapper!(341, 262)
 
     private void mapToRaster(Cycle[341] raster)
     {
-        foreach (h; Sequence.range(1, 257, 8))
+        for (int h = 1; h < 257; h += 8)
         {
             raster[h + 0] += cycles.bgNameRequest;
             raster[h + 1] += cycles.bgNameResponse;
@@ -45,7 +44,7 @@ class BgCycleMapper : CycleMapper!(341, 262)
             raster[h + 7] += cycles.bgBit1Response;
         }
 
-        foreach (h; Sequence.range(321, 337, 8))
+        for (int h = 321; h < 337; h += 8)
         {
             raster[h + 0] += cycles.bgNameRequest;
             raster[h + 1] += cycles.bgNameResponse;
@@ -57,18 +56,18 @@ class BgCycleMapper : CycleMapper!(341, 262)
             raster[h + 7] += cycles.bgBit1Response;
         }
 
-        foreach (h; Sequence.range(337, 341, 2))
+        for (int h = 337; h < 341; h += 2)
         {
             raster[h + 0] += cycles.bgNameRequest;
             raster[h + 1] += cycles.bgNameResponse;
         }
 
-        foreach (h; Sequence.range(8, 249, 8))
+        for (int h = 8; h < 249; h += 8)
         {
             raster[h] += cycles.clockScrollX;
         }
 
-        foreach (h; Sequence.range(328, 336, 8))
+        for (int h = 328; h < 337; h += 8)
         {
             raster[h] += cycles.clockScrollX;
         }

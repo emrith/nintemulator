@@ -14,9 +14,13 @@ class Spin : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.latch = oam.object[oam.objectIndex];
         oam.memoryIndex = (oam.memoryIndex + 4) & 0xfc;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

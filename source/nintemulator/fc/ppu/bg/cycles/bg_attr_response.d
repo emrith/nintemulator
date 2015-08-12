@@ -20,12 +20,16 @@ class BgAttrResponse : Cycle
         this.scroll = scroll;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         int x = (scroll.address >> 0) & 2;
         int y = (scroll.address >> 4) & 4;
 
         registers.attr = (bus.data >> (y | x)) & 3;
         bus.read = false;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

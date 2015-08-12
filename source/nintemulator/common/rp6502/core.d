@@ -16,7 +16,8 @@ class Core
     {
         if (bus.ready)
         {
-            cycles[registers.ir][registers.t].execute();
+            cycles[registers.code][registers.time].risingEdge();
+            cycles[registers.code][registers.time].fallingEdge();
         }
     }
 }

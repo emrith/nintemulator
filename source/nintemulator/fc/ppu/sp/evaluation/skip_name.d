@@ -15,10 +15,14 @@ class SkipName : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.latch = oam.object[oam.objectIndex];
         oam.memoryIndex = (oam.memoryIndex + 1) & 0xff;
         oam.phase = EvaluationCycles.SkipAttributePhase;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

@@ -14,7 +14,7 @@ class ClockScrollX : Cycle
         this.scroll = scroll;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         if ((scroll.address & 0x001f) == 0x001f)
         {
@@ -24,5 +24,9 @@ class ClockScrollX : Cycle
         {
             scroll.address += 0x0001;
         }
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

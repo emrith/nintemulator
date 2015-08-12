@@ -14,8 +14,12 @@ class OamInitializeRead : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.latch = 0xff;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

@@ -14,8 +14,12 @@ class LeaveVBlank : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         registers.status &= 0b0001_1111;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

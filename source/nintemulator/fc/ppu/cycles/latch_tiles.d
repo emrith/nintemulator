@@ -19,11 +19,15 @@ class LatchTiles : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         bgOutput.plane0 = (bgOutput.plane0 << 8) | registers.bit0;
         bgOutput.plane1 = (bgOutput.plane1 << 8) | registers.bit1;
         bgOutput.attribute0 = (bgOutput.attribute0 << 8) | AttributeLatches[(registers.attr >> 0) & 1];
         bgOutput.attribute1 = (bgOutput.attribute1 << 8) | AttributeLatches[(registers.attr >> 1) & 1];
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

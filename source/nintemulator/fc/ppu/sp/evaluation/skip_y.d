@@ -18,7 +18,7 @@ class SkipY : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         int compare = (registers.v - oam.latch) & 0x1ff;
         if (compare < 8)
@@ -39,5 +39,9 @@ class SkipY : Cycle
         }
 
         oam.latch = oam.object[oam.objectIndex];
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

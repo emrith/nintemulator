@@ -1,9 +1,9 @@
-﻿module common.register16;
+module common.register16;
 
 
 version (BigEndian)
 {
-    string Register16(string name)()
+    string makeRegister16(string name)()
     {
         return `
         union
@@ -21,7 +21,7 @@ version (BigEndian)
 }
 else
 {
-    string Register16(string name)()
+    string makeRegister16(string name)()
     {
         return `
         union

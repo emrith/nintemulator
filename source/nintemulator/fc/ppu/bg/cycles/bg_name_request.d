@@ -17,9 +17,13 @@ class BgNameRequest : Cycle
         this.scroll = scroll;
     }
 
-    public override void execute()
+    override public void risingEdge()
     {
         bus.address = 0x2000 | (scroll.address & 0xfff);
         bus.read = true;
+    }
+
+    public override void fallingEdge()
+    {
     }
 }

@@ -20,7 +20,7 @@ class SpBit1Request : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         auto index = (registers.h - 257) / 8;
         auto value = oam.Output[index];
@@ -28,5 +28,9 @@ class SpBit1Request : Cycle
 
         bus.address = registers.spAddress | (value.name << 4) | 8 | (line & 7);
         bus.read = true;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

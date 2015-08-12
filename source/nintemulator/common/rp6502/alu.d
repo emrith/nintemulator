@@ -3,8 +3,8 @@
 
 class ALU
 {
-    public ubyte c;
-    public ubyte v;
+    public bool c;
+    public bool v;
 
     public ubyte add(ubyte lhs, ubyte rhs, int carry = 0)
     {
@@ -19,102 +19,32 @@ class ALU
         }
     }
 
-    public ubyte sub(ubyte lhs, ubyte rhs, int carry = 0)
+    public ubyte sub(ubyte left, ubyte right, int carry = 1)
     {
-        return add(lhs, ~rhs, carry);
-    }
-
-    unittest
-    {
-        auto sut = new ALU();
-
-        assert(sut.add(0xff, 0x00, 0) == 0xff);
-        assert(sut.add(0xff, 0x00, 1) == 0x00);
-        assert(sut.add(0xff, 0x01, 0) == 0x00);
-        assert(sut.add(0xff, 0x01, 1) == 0x01);
-
-        sut.c = 0;
-        sut.add(0xff, 0x00, 1);
-
-        assert(sut.c == 1);
-
-        sut.c = 1;
-        sut.add(0xff, 0x00, 0);
-
-        assert(sut.c == 0);
-
-        sut.v = 0;
-        sut.add(0x80, 0x80, 0);
-
-        assert(sut.v == 1);
-
-        sut.v = 0;
-        sut.add(0x80, 0x7f, 1);
-
-        assert(sut.v == 0);
+        return add(left, ~right, carry);
     }
 
     public ubyte shl(ubyte value, int carry = 0)
     {
         asm
         {
-            ror carry, 1;
-            rcl value, 1;
-            setc c[EAX];
+            mov ECX, EAX;
+            ror carry, 1; // Get the `carry` flag into the host processor's `c` flag.
+            mov AL, value;
+            rcl AL, 1;
+            setc c[ECX];
         }
-
-        return value;
-    }
-
-    unittest
-    {
-        auto sut = new ALU();
-
-        assert(sut.shl(0x80, 0) == 0x00);
-        assert(sut.shl(0x40, 0) == 0x80);
-        assert(sut.shl(0x80, 1) == 0x01);
-        assert(sut.shl(0x40, 1) == 0x81);
-
-        sut.c = 0;
-        sut.shl(0x80, 0);
-
-        assert(sut.c == 1);
-
-        sut.c = 1;
-        sut.shl(0x40, 0);
-
-        assert(sut.c == 0);
     }
 
     public ubyte shr(ubyte value, int carry = 0)
     {
         asm
         {
-            ror carry, 1;
-            rcr value, 1;
-            setc c[EAX];
+            mov ECX, EAX;
+            ror carry, 1; // Get the `carry` flag into the host processor's `c` flag.
+            mov AL, value;
+            rcr AL, 1;
+            setc c[ECX];
         }
-
-        return value;
-    }
-
-    unittest
-    {
-        auto sut = new ALU();
-
-        assert(sut.shr(0x01, 0) == 0x00);
-        assert(sut.shr(0x80, 0) == 0x40);
-        assert(sut.shr(0x01, 1) == 0x80);
-        assert(sut.shr(0x80, 1) == 0xc0);
-
-        sut.c = 0;
-        sut.shr(0x01, 0);
-
-        assert(sut.c == 1);
-
-        sut.c = 1;
-        sut.shr(0x80, 0);
-
-        assert(sut.c == 0);
     }
 }

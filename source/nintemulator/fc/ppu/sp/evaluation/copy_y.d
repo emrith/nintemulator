@@ -18,7 +18,7 @@ class CopyY : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.object[oam.objectIndex] = oam.latch;
 
@@ -43,5 +43,9 @@ class CopyY : Cycle
                 oam.phase = EvaluationCycles.SpinPhase;
             }
         }
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

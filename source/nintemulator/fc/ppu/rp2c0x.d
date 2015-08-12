@@ -1,4 +1,4 @@
-﻿module fc.ppu.rp2c0x;
+module fc.ppu.rp2c0x;
 
 
 import common.cycle;
@@ -24,7 +24,7 @@ class RP2C0x(int H_PERIOD, int V_PERIOD)
     {
         if (registers.bgEnabled || registers.spEnabled)
         {
-            raster[registers.h].execute();
+            raster[registers.h].risingEdge();
         }
 
         if (++registers.h == H_PERIOD)
@@ -35,10 +35,13 @@ class RP2C0x(int H_PERIOD, int V_PERIOD)
             {
                 registers.v = 0;
 
-                if (registers.skipIdle)
+                static if (V_PERIOD == 262)
                 {
-                    registers.skipIdle = false;
-                    registers.h = 1;
+                    if (registers.skipIdle)
+                    {
+                        registers.skipIdle = false;
+                        registers.h = 1;
+                    }
                 }
             }
 

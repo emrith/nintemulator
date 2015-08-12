@@ -14,8 +14,12 @@ class OamRead : Cycle
         this.oam = oam;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         oam.latch = oam.memory[oam.memoryIndex];
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

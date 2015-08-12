@@ -23,7 +23,7 @@ class SpBit1Response : Cycle
         this.spOutputUnit = spOutputUnit;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         auto index = (registers.h - 257) / 8;
         auto value = oam.Output[index];
@@ -38,5 +38,9 @@ class SpBit1Response : Cycle
         }
 
         bus.read = false;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

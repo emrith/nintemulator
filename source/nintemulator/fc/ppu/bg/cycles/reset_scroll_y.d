@@ -14,8 +14,12 @@ class ResetScrollY : Cycle
         this.scroll = scroll;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         scroll.address = (scroll.address & ~0x7be0) | (scroll.latch & 0x7be0);
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }

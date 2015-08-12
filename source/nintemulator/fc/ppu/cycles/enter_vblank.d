@@ -14,8 +14,12 @@ class EnterVBlank : Cycle
         this.registers = registers;
     }
 
-    public override void execute()
+    public override void risingEdge()
     {
         registers.status |= 0b1000_0000;
+    }
+    
+    public override void fallingEdge()
+    {
     }
 }
