@@ -2,7 +2,10 @@
 
 bin/
 obj/
+Release/
+Debug/
 
 # Files
 
+*.suo
 *.userprefs
