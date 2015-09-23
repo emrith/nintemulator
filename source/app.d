@@ -2,6 +2,7 @@ import gtk.Builder;
 import gtk.Main;
 import gtk.MenuItem;
 import gtk.Window;
+import gtk.Widget;
 import gtk.FileChooserDialog;
 
 Builder builder;
@@ -18,6 +19,7 @@ void main(string[] args)
     builder.connectSignals(null);
 
     window = cast(Window)builder.getObject("window");
+	window.addOnHide( delegate void(Widget aux){ Main.quit(); } );
     window.showAll();
 
     Main.run();
