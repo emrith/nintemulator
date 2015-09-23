@@ -1,4 +1,4 @@
-﻿module fc.ppu.sp.sp_cycles;
+﻿module fc.ppu.sp.obj_cycles;
 
 
 import fc.ppu.bg.cycles.bg_name_request;

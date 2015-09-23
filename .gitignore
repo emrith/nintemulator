@@ -1,11 +1,6 @@
-# Paths
-
-bin/
-obj/
-Release/
-Debug/
-
-# Files
-
-*.suo
-*.userprefs
+.dub
+docs.json
+__dummy.html
+*.exe
+*.o
+*.obj

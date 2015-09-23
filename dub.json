@@ -1,0 +1,11 @@
+﻿{
+  "name": "nintemulator",
+  "description": "A multi-system emulator for Nintendo consoles.",
+  "copyright": "Copyright © 2015",
+  "authors": [ "Adam Becker", "Ala Hadid" ],
+  "lflags": [ "-L/SUBSYSTEM:WINDOWS" ],
+  "dependencies": {
+    "derelict-sdl2": "~>1.9.7",
+    "gtk-d": "~>3.1.4"
+  }
+}

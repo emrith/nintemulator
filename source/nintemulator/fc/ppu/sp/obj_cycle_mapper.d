@@ -5,7 +5,7 @@ import common.cycle;
 import common.cycle_mapper;
 import common.sequence;
 import fc.ppu.sp.oam;
-import fc.ppu.sp.sp_cycles;
+import fc.ppu.sp.obj_cycles;
 
 
 class SpCycleMapper : CycleMapper!(341, 262)
